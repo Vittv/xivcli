@@ -1,6 +1,6 @@
 const BALANCE_BASE = "https://www.thebalanceffxiv.com/jobs";
 
-const JOB_DATA = {
+export const JOB_DATA = {
   // Melee
   "drg": { role: "melee", name: "dragoon" },
   "mnk": { role: "melee", name: "monk" },
@@ -33,7 +33,7 @@ const JOB_DATA = {
   "pct": { role: "casters", name: "pictomancer" }
 };
 
-function getBisLink(jobCode) {
+export function getBisLink(jobCode) {
   const job = JOB_DATA[jobCode];
   if (!job) return null;
   return `${BALANCE_BASE}/${job.role}/${job.name}/best-in-slot/`;
