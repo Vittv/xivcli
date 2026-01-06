@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  --color-rosewater: #f5e0dc;
+  --color-flamingo: #f2cdcd;
+  --color-pink: #f5c2e7;
+  --color-mauve: #cba6f7;
+  --color-red: #f38ba8;
+  --color-maroon: #eba0ac;
+  --color-peach: #fab387;
+  --color-yellow: #f9e2af;
+  --color-green: #a6e3a1;
+  --color-teal: #94e2d5;
+  --color-sky: #89dceb;
+  --color-sapphire: #74c7ec;
+  --color-blue: #89b4fa;
+  --color-lavender: #b4befe;
+  --color-text: #cdd6f4;
+  --color-subtext1: #bac2de;
+  --color-subtext0: #a6adc8;
+  --color-overlay2: #9399b2;
+  --color-overlay1: #7f849c;
+  --color-overlay0: #6c7086;
+  --color-surface2: #585b70;
+  --color-surface1: #45475a;
+  --color-surface0: #313244;
+  --color-base: #1e1e2e;
+  --color-mantle: #181825;
+  --color-crust: #11111b;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-text);
+}
+
+#terminal {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-wrap: wrap;
+  font-family: "AdwaitaMono Nerd Font";
+  font-weight: 500;
+}
+
+#output .input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+#input-line {
+  display: flex;
+  flex-direction: column;
+}
+
+.command-block {
+  margin-bottom: 2rem;
+  gap: 0.6rem;
+}
+
+#command-input {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-family: "AdwaitaMono Nerd Font";
+  width: 100%;
+  height: 2rem;
+  background-color: transparent;
+  color: var(--color-text);
+  border: none;
+  text-decoration: none;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  outline: none;
+  caret-color: var(--color-flamingo);
+}
+
+.prompt {
+  color: var(--color-blue);
+}
+
+.input-prefix {
+  font-size: 1.2rem;
+  color: var(--color-pink);
+}
+
+
