@@ -27,38 +27,50 @@ export function handleHistoryNavigation(e, input) {
   }
 }
 
-export function handleAutocomplete(e, input, commands, addLineToBlock, block, terminal) {
-  if (e.key !== "Tab") return;
+export function handleAutocomplete(
+  e,
+  input,
+  commands,
+  addLineToBlock,
+  block,
+  terminal,
+) {
+  if (e.key !== "Tab") return;
 
-  e.preventDefault();
+  e.preventDefault();
 
-  // use the raw input value
-  const rawValue = input.value; 
+  // use the raw input value
+  const rawValue = input.value;
 
-   let parts = rawValue.split(/\s+/).filter(p => p !== "");
-    if (rawValue.endsWith(' ') && rawValue.trim() !== '') {
-       parts.push("");
-   }
+  let parts = rawValue.split(/\s+/).filter((p) => p !== "");
+  if (rawValue.endsWith(" ") && rawValue.trim() !== "") {
+    parts.push("");
+  }
 
-  const current = parts[parts.length - 1]?.toLowerCase() || "";
-  let matches = [];
-  const command = parts[0]?.toLowerCase();
+  const current = parts[parts.length - 1]?.toLowerCase() || "";
+  let matches = [];
+  const command = parts[0]?.toLowerCase();
 
-  if (parts.length === 1 && !rawValue.endsWith(' ')) {
-    matches = Object.keys(commands).filter(cmd =>
-      cmd.startsWith(current)
-    );
-  }
+  if (parts.length === 1 && !rawValue.endsWith(" ")) {
+    matches = Object.keys(commands).filter((cmd) => cmd.startsWith(current));
+  }
 
-  if (command === "bis" && parts.length > 1) {
-    const JOB_CODES = Object.keys(commands.bis.jobs || {});
-    matches = JOB_CODES.filter(code => code.startsWith(current || ""));
-  }
+  if (command === "bis" && parts.length > 1) {
+    const JOB_CODES = Object.keys(commands.bis.jobs || {});
+    matches = JOB_CODES.filter((code) => code.startsWith(current || ""));
+  }
 
-  applyAutocomplete(matches, input, current, addLineToBlock, block, terminal);
+  applyAutocomplete(matches, input, current, addLineToBlock, block, terminal);
 }
 
-function applyAutocomplete(matches, input, current, addLineToBlock, block, terminal) {
+function applyAutocomplete(
+  matches,
+  input,
+  current,
+  addLineToBlock,
+  block,
+  terminal,
+) {
   if (matches.length === 0) return;
 
   if (matches.length === 1) {
@@ -77,4 +89,3 @@ function applyAutocomplete(matches, input, current, addLineToBlock, block, termi
     });
   }
 }
-
