@@ -32,7 +32,7 @@ export function handleAutocomplete(e, input, commands, addLineToBlock, block, te
 
   e.preventDefault();
 
-  // Use the raw input value
+  // use the raw input value
   const rawValue = input.value; 
 
    let parts = rawValue.split(/\s+/).filter(p => p !== "");

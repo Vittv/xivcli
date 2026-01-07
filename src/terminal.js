@@ -42,8 +42,6 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
-
-
 function addInputBlock(command) {
   const blockWrapper = document.createElement("div");
   blockWrapper.className = "command-block";
@@ -107,5 +105,19 @@ export function addLinkToBlock(block, url, prefix = "") {
   
   line.appendChild(link);
   block.appendChild(line);
+
+  // scroll to bottom after printing command output
+  requestAnimationFrame(() => {
+    terminal.scrollTop = terminal.scrollHeight;
+  });
+
   return line;
 }
+
+// greet the user on load
+window.addEventListener('DOMContentLoaded', () => {
+  const greetBlock = document.createElement('div');
+  greetBlock.className = 'command-block';
+  output.appendChild(greetBlock);
+  commands.greeter(greetBlock);
+});
