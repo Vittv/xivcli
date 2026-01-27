@@ -97,7 +97,7 @@ body {
 #input-line {
 	display: flex;
 	flex-direction: column;
-  margin-bottom: 4rem;
+	margin-bottom: 4rem;
 }
 
 .command-block {
@@ -141,4 +141,8 @@ body {
 
 .news-link {
 	margin-bottom: 1rem;
+}
+
+.news-link:hover {
+  filter: brightness(1.2);
 }

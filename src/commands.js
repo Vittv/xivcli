@@ -211,6 +211,49 @@ export const commands = {
       addLinkToBlock(block, url, `${name} - `);
     });
   },
+  maintenance: function (block) {
+    addLineToBlock(block, "Checking for maintenance...");
+    addLineToBlock(block, "");
+
+    fetch("https://lodestonenews.com/news/maintenance")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data || data.length === 0) {
+          addLineToBlock(block, "No scheduled maintenance found!");
+          return;
+        }
+
+        addLineToBlock(block, "Recent maintenance announcements:");
+        addLineToBlock(block, "");
+
+        data.slice(0, 4).forEach((item) => {
+          const postDate = new Date(item.time);
+          const posted = postDate.toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+
+          const mainPostDate = addLineToBlock(block, `  ${posted}`);
+          mainPostDate.style.color = "var(--vague-cyan)";
+          const titleLine = addLineToBlock(block, `• ${item.title}`);
+          titleLine.classList.add("news-title");
+          const maintLink = addLinkToBlock(block, ` ${item.url}`);
+          maintLink.classList.add("news-link");
+          addLineToBlock(block, "");
+        });
+
+        const helperMessage = addLineToBlock(
+          block,
+          "Click links for full maintenance details and times!",
+        );
+        helperMessage.style.color = "var(--vague-purple)";
+        helperMessage.style.fontWeight = "700";
+      })
+      .catch((err) => {
+        addLineToBlock(block, `Error: ${err.message}`);
+      });
+  },
 };
 
 commands.help.description = "Show every available command";
@@ -220,5 +263,6 @@ commands.news.description = "Fetch latest news from Lodestone";
 commands.reset.description = "Daily and weekly reset timer";
 commands.greeter.description = "Welcome message with latest news";
 commands.unlock.description = "Unlock guides for duties";
+commands.maintenance.description = "Check for scheduled maintenance";
 
 commands.bis.jobs = JOB_DATA;
