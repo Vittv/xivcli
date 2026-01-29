@@ -75,7 +75,6 @@ body {
 	height: 100%;
 	font-family: "AdwaitaMono Nerd Font";
 	font-weight: 500;
-	margin-left: 1rem;
 	overflow-y: auto;
 	max-height: 100vh;
 	word-wrap: break-word;
