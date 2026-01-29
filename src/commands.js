@@ -99,9 +99,9 @@ export const commands = {
       dailyReset.setUTCDate(dailyReset.getUTCDate() + 1);
     }
 
-    // weekly reset: Tuesday 9:00 UTC
+    // weekly reset: Tuesday 8:00 UTC
     const weeklyReset = new Date(now);
-    weeklyReset.setUTCHours(9, 0, 0, 0);
+    weeklyReset.setUTCHours(8, 0, 0, 0);
 
     // calculate days until next Tuesday
     const currentDay = now.getUTCDay();
